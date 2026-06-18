@@ -38,7 +38,7 @@ public class Customer {
 
     private LocalDateTime createdAt;
 
-    private LocalDateTime uodatedAt;
+    private LocalDateTime updatedAt;
 
 
 
