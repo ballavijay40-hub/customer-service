@@ -13,6 +13,8 @@ public interface CustomerService {
 
     CustomerResponseDto getById(Long id);
 
+    CustomerResponseDto updateCustomerById(Long id,CustomerRequestDto dto);
+
 
     void deleteById(Long id);
 }

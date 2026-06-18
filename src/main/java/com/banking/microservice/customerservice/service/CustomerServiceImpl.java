@@ -9,6 +9,8 @@ import com.banking.microservice.customerservice.exception.CustomerNotFoundExcept
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.attribute.UserPrincipalNotFoundException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -39,6 +41,21 @@ public class CustomerServiceImpl implements CustomerService{
     public CustomerResponseDto getById(Long id){
         Customer customer=customerRepository.findById(id)
                 .orElseThrow(()->new CustomerNotFoundException("customer not found."));
+        return customerMapper.toResponse(customer);
+    }
+
+    @Override
+    public CustomerResponseDto updateCustomerById(Long id,CustomerRequestDto dto){
+        Customer customer=customerRepository.findById(id)
+                .orElseThrow(()->new CustomerNotFoundException("customer not found."));
+
+        customer.setFullname(dto.getFullname());
+        customer.setAddress(dto.getAddress());
+        customer.setUpdatedAt(LocalDateTime.now());
+        customer.setPhone(customer.getPhone());
+        customer.setEmail(dto.getEmail());
+        customer.setKycNumber(customer.getKycNumber());
+
         return customerMapper.toResponse(customer);
     }
 
