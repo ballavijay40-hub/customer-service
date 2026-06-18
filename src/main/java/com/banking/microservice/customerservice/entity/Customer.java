@@ -1,17 +1,13 @@
 package com.banking.microservice.customerservice.entity;
 
-
-
-
 import jakarta.persistence.*;
 import lombok.*;
-
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="customers",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"email","phone","kycNumber"})
+        uniqueConstraints = @UniqueConstraint(columnNames = {"email","phone"})
 )
 @Getter
 @Setter
@@ -33,10 +29,10 @@ public class Customer {
     @Column(nullable = false)
     private String phone;
 
-    @Column(nullable = false)
+
     private String address;
 
-    @Column(nullable = false )
+
     private  String kycNumber;
 
 
