@@ -1,3 +1,9 @@
+server:
+  port: 8082
+
+profiles:
+  active: local
+  
 spring:
   application:
     name: customer-service

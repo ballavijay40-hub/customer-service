@@ -27,12 +27,12 @@ public class CustomerController {
         return  ResponseEntity.ok(customerService.getAllCustomers());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{customerId}")
     public ResponseEntity<CustomerResponseDto> getCustomer(@PathVariable String customerId){
         return ResponseEntity.ok(customerService.getBycustomerId(customerId));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{customerId}")
     public ResponseEntity<CustomerResponseDto> updateCustomer(@PathVariable String customerId,@RequestBody CustomerRequestDto dto){
         return ResponseEntity.ok(customerService.updateByCustomerId(customerId,dto));
 
@@ -41,7 +41,7 @@ public class CustomerController {
 
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{customerId}")
     public ResponseEntity<Void> deleteCustomer(@PathVariable String customerId){
         customerService.deleteByCustomerId(customerId);
         return ResponseEntity.noContent().build();
