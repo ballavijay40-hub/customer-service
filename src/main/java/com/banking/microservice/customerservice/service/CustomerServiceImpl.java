@@ -9,9 +9,12 @@ import com.banking.microservice.customerservice.exception.CustomerNotFoundExcept
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.attribute.UserPrincipalNotFoundException;
+
 import java.time.LocalDateTime;
 import java.util.List;
+
+
+
 
 
 @Service
@@ -38,15 +41,15 @@ public class CustomerServiceImpl implements CustomerService{
 
     }
     @Override
-    public CustomerResponseDto getById(Long id){
-        Customer customer=customerRepository.findById(id)
+    public CustomerResponseDto getBycustomerId(String customerId){
+        Customer customer=customerRepository.findByCustomerId(customerId)
                 .orElseThrow(()->new CustomerNotFoundException("customer not found."));
         return customerMapper.toResponse(customer);
     }
 
     @Override
-    public CustomerResponseDto updateCustomerById(Long id,CustomerRequestDto dto){
-        Customer customer=customerRepository.findById(id)
+    public CustomerResponseDto updateByCustomerId(String customerId ,CustomerRequestDto dto){
+        Customer customer=customerRepository.findByCustomerId(customerId)
                 .orElseThrow(()->new CustomerNotFoundException("customer not found."));
 
         customer.setFullname(dto.getFullname());
@@ -60,12 +63,14 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public void deleteById(Long id){
-        Customer customer=customerRepository.findById(id)
+    public void deleteByCustomerId(String customerId){
+        Customer customer=customerRepository.findByCustomerId(customerId)
                 .orElseThrow(()->new CustomerNotFoundException("customer not found."));
 
-        customerRepository.deleteById(id);
+        customerRepository.deleteById(customer.getId());
 
     }
+
+
 
 }

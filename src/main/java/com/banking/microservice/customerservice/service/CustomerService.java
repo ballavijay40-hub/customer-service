@@ -11,10 +11,10 @@ public interface CustomerService {
 
     List<CustomerResponseDto> getAllCustomers();
 
-    CustomerResponseDto getById(Long id);
+    CustomerResponseDto getBycustomerId(String customerId);
 
-    CustomerResponseDto updateCustomerById(Long id,CustomerRequestDto dto);
+    CustomerResponseDto updateByCustomerId(String customerId,CustomerRequestDto dto);
 
 
-    void deleteById(Long id);
+    void deleteByCustomerId(String customerId);
 }

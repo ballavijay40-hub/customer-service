@@ -18,6 +18,8 @@ public class CustomerRequestDto {
     @NotNull(message = "name is required.")
     private String fullname;
 
+
+
     @Email
     @NotNull(message = "email is required.")
     private String email;
